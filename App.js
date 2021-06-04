@@ -3,9 +3,9 @@ import { Text, View, StyleSheet,Image } from 'react-native';
 import Constants from 'expo-constants';
 import Transaction from './screens/transaction';
 import Search from './screens/search'
-import {createAppContainer} from 'react-navigation';
+import {createAppContainer,createSwitchNavigator} from 'react-navigation';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
-
+import Login from './screens/log';
 
 export default function App() {
   return (
@@ -34,7 +34,13 @@ const tabnavigator = createBottomTabNavigator({
     }
   })
 })
-const AppContainer = createAppContainer(tabnavigator)
+const switchNavigator = createSwitchNavigator({
+  Login:{screen:Login},
+  Tabnavigator:{screen:tabnavigator}
+
+})
+
+const AppContainer = createAppContainer(switchNavigator)
 const styles = StyleSheet.create({
   container: {
     flex: 1,
